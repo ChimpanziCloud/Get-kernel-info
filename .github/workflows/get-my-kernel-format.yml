@@ -33,4 +33,4 @@ jobs:
             exit 1
           fi
           chmod +x unpackimg.sh
-          unpackimg.sh -i boot.img
+          bash unpackimg.sh -i boot.img
