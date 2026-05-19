@@ -7,32 +7,30 @@ on:
         description: "URL to download the boot.img file"
         required: true
         type: string
-        #default: "https://filebin.net/gp05fto9lulm3qwg/boot.img"  # Default URL if not provided
+        #default: "https://dumps.tadiphone.dev/dumps/motorola/vienna/-/raw/user-14-U4UI34.8-22-7-ed299-release-keys/boot.img"  # Default URL if not provided
 
 jobs:
   process-boot-img:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required
 
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Download boot.img from the provided URL
-      - name: Download boot.img
+      # Step 2: Ensure magiskboot is executable and process boot.img
+      - name: Process boot.img
+        continue-on-error: true
         run: |
+          git clone https://github.com/osm0sis/Android-Image-Kitchen.git aik/master
+          cd aik
+          cd master
           curl -L -o boot.img "${{ github.event.inputs.boot_img_url }}"
           if [ ! -f "boot.img" ]; then
             echo "Failed to download boot.img. Exiting."
             exit 1
           fi
-
-      # Step 3: Ensure magiskboot is executable and process boot.img
-      - name: Process boot.img
-        continue-on-error: true
-        run: |
-          # Ensure magiskboot is executable
-          chmod +x magiskboot
-
-          # Run magiskboot and capture output
-          ./magiskboot unpack boot.img
+          chmod +x unpackimg.bat
+          unpackimg.bat boot.img
