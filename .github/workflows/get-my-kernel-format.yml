@@ -32,5 +32,4 @@ jobs:
             echo "Failed to download boot.img. Exiting."
             exit 1
           fi
-          chmod +x unpackimg.sh
-          bash unpackimg.sh -i boot.img
+          bash unpackimg.sh boot.img
