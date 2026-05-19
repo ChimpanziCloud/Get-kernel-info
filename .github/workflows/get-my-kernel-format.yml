@@ -24,7 +24,7 @@ jobs:
       - name: Process boot.img
         continue-on-error: true
         run: |
-          git clone https://github.com/osm0sis/Android-Image-Kitchen.git aik/master
+          git clone -b AIK-Linux https://github.com/osm0sis/Android-Image-Kitchen.git aik/master
           cd aik
           cd master
           curl -L -o boot.img "${{ github.event.inputs.boot_img_url }}"
@@ -32,4 +32,5 @@ jobs:
             echo "Failed to download boot.img. Exiting."
             exit 1
           fi
-          unpackimg.bat -i boot.img
+          chmod +x unpackimg.sh
+          unpackimg.sh -i boot.img
