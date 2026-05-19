@@ -24,7 +24,7 @@ jobs:
       - name: Process boot.img
         continue-on-error: true
         run: |
-          git clone --recursive -b AIK-Linux https://github.com/osm0sis/Android-Image-Kitchen.git aik/master
+          git clone https://github.com/maximus-sallam/android-image-kitchen-complete.git aik/master
           cd aik
           cd master
           curl -L -o boot.img "${{ github.event.inputs.boot_img_url }}"
