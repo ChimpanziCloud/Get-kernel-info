@@ -35,4 +35,4 @@ jobs:
           chmod +x magiskboot
 
           # Run magiskboot and capture output
-          ./magiskboot unpack boot.img
+          ./magiskboot unpack vendor_boot.img
