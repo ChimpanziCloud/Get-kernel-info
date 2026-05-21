@@ -37,4 +37,4 @@ jobs:
             echo "Failed to download boot.img. Exiting."
             exit 1
           fi
-          python unpack_bootimg.py boot.img
+          python unpack_bootimg.py --boot_img boot.img
