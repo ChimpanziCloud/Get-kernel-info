@@ -24,7 +24,7 @@ jobs:
       - name: Process boot.img
         continue-on-error: true
         run: |
-          git clone https://github.com/maximus-sallam/android-image-kitchen-complete.git aik/master
+          git clone https://github.com/xiaolu/mkbootimg_tools.git aik/master
           cd aik
           cd master
           curl -L -o boot.img "${{ github.event.inputs.boot_img_url }}"
@@ -32,4 +32,5 @@ jobs:
             echo "Failed to download boot.img. Exiting."
             exit 1
           fi
-          bash unpackimg.sh boot.img
+          chmod +x mkboot
+          mkboot boot.img
