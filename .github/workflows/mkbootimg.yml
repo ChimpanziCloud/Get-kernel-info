@@ -33,4 +33,4 @@ jobs:
             exit 1
           fi
           chmod +x mkboot
-          mkboot boot.img
+          ./mkboot boot.img
