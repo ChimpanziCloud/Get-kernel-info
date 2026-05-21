@@ -1,4 +1,4 @@
-name: Process boot.img from URL
+name: Process boot.img from URL (mkbootimg)
 
 on:
   workflow_dispatch: # Allow manual triggering of the workflow
@@ -33,4 +33,4 @@ jobs:
             exit 1
           fi
           chmod +x mkboot
-          ./mkboot boot.img
+          ./mkboot boot.img newboot
