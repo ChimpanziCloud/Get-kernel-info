@@ -36,3 +36,11 @@ jobs:
 
           # Run magiskboot and capture output
           ./magiskboot unpack vendor_boot.img
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Out-Directory
+          path: |
+             Image
+             kernel
